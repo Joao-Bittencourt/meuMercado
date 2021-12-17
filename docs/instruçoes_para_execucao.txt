@@ -1,0 +1,10 @@
+
+Abrir a pasta meuMercado e executar o executavel meuMercado
+
+
+Usuarios 
+ login: admin
+ senha: 123
+
+ login: usuario
+ senha: 123

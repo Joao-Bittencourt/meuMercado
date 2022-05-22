@@ -5,6 +5,20 @@ App::uses('AppModel', 'Model');
 class Produto extends AppModel {
 
     public $useTable = 'produtos';
+    public $belongsTo = [
+        'Categoria'
+    ];
+    public $situacao_tributaria = [
+        'T' => 'Tributado por ICMS',
+    ];
+    public $ind_arredondamento = [
+        'A' => 'Arredondamento',
+        'T' => 'Truncamento',
+    ];
+    public $ind_producao = [
+        'P' => 'Propria',
+        'T' => 'Terceiros',
+    ];
     public $validate = [
         'nome' => [
             'notBlank' => [
@@ -12,13 +26,31 @@ class Produto extends AppModel {
                 'message' => 'Nome não pode estar em branco'
             ]
         ],
-        'tipo' => [
+        'categoria_id' => [
             'notBlank' => [
                 'rule' => 'notBlank',
-                'message' => 'Tipo não pode estar em branco.'
+                'message' => 'Categoria não pode estar em branco.'
             ]
         ],
-        'valor' => [
+        'descricao' => [
+            'notBlank' => [
+                'rule' => 'notBlank',
+                'message' => 'Descricao não pode estar em branco.'
+            ]
+        ],
+        'ncm' => [
+            'notBlank' => [
+                'rule' => 'notBlank',
+                'message' => 'NCM não pode estar em branco.'
+            ]
+        ],
+        'unidade_medida' => [
+            'notBlank' => [
+                'rule' => 'notBlank',
+                'message' => 'Unidade de Medida não pode estar em branco.'
+            ]
+        ],
+        'valor_unitario' => [
             'notBlank' => [
                 'rule' => 'notBlank',
                 'message' => 'Valor não pode estar em branco.'
@@ -28,16 +60,25 @@ class Produto extends AppModel {
                 'message' => 'Informe valor valido. (0.00)'
             ]
         ],
-        'estoque' => [
+        'situacao_tributaria' => [
             'notBlank' => [
                 'rule' => 'notBlank',
-                'message' => 'estoque não pode estar em branco.'
-            ],
-            'numeric' => [
-                'rule' => 'numeric',
-                'message' => 'Informe somente numeros'
+                'message' => 'situacao_tributaria não pode estar em branco.'
             ]
-        ]
+        ],
+        'ind_arredondamento' => [
+            'notBlank' => [
+                'rule' => 'notBlank',
+                'message' => 'ind_arredondamento não pode estar em branco.'
+            ]
+        ],
+        'ind_producao' => [
+            'notBlank' => [
+                'rule' => 'notBlank',
+                'message' => 'ind_producao não pode estar em branco.'
+            ]
+        ],
+        
     ];
 
     public function findAllOrconditions($params = []) {

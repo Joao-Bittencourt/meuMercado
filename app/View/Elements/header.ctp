@@ -24,7 +24,7 @@ echo $this->Html->charset(); ?>
     }
 </style>
 <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/offcanvas-navbar/">
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <style>
     .bd-placeholder-img {
         font-size: 1.125rem;

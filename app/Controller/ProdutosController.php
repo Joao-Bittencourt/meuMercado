@@ -4,20 +4,9 @@ App::uses('AppController', 'Controller');
 
 class ProdutosController extends AppController {
 
-    /**
-     * Components
-     *
-     * @var array
-     */
-    public $components = array('Paginator', 'Flash');
+    public $components = array();
 
-    /**
-     * index method
-     *
-     * @return void
-     */
     public function index() {
-        $this->Produto->recursive = -1;
 
         $this->set('title', 'Produto');
         $this->set('titleButtonSubmit', 'Buscar');
@@ -26,13 +15,6 @@ class ProdutosController extends AppController {
         $this->set('dados', $dados);
     }
 
-    /**
-     * view method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
     public function view($id = null) {
         if (!$this->Produto->exists($id)) {
             throw new NotFoundException(__('Produto não encontrado!'));
@@ -41,16 +23,16 @@ class ProdutosController extends AppController {
         $this->set('produtos', $this->Produto->find('first', $options));
     }
 
-    /**
-     * add method
-     *
-     * @return void
-     */
     public function add($id = null) {
 
         if ($this->Produto->exists($id) && empty($this->request->data)) {
             $options = array('conditions' => array('Produto.' . $this->Produto->primaryKey => $id));
             $this->request->data = $this->Produto->find('first', $options);
+        }
+        
+        if ($this->request->is('get') && empty($this->request->data)) {
+            $this->request->data['Produto']['ind_arredondamento'] = 'A';
+            $this->request->data['Produto']['ind_producao'] = 'T';
         }
 
         if ($this->request->is('post')) {
@@ -62,15 +44,13 @@ class ProdutosController extends AppController {
                 $this->Flash->error(__('Produto não pode ser salvo, tente novamente.'));
             }
         }
+        
+        $this->set('categorias', $this->Produto->Categoria->find('list',['conditions' => ['status' => 1]]));
+        $this->set('situacaoTributarias', $this->Produto->situacao_tributaria);
+        $this->set('indArredondamentos', $this->Produto->ind_arredondamento);
+        $this->set('indProducaos', $this->Produto->ind_producao);
     }
 
-    /**
-     * edit method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
     public function edit($id = null) {
         if (!$this->Produto->exists($id)) {
             throw new NotFoundException(__('Produto não encontrado!'));
@@ -122,13 +102,6 @@ class ProdutosController extends AppController {
         }
     }
 
-    /**
-     * delete method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
     public function delete($id = null) {
         $this->Produto->id = $id;
         if (!$this->Produto->exists()) {

@@ -1,6 +1,11 @@
 <?php ?>
+<style>
+    .nav-link {
+        color: white !important;
+    }
 
-<div class="card">
+</style>
+<div class="card rounded-0 bg-secondary" style="--bs-bg-opacity: .5;">
 
     <ul class="nav nav-pills">
         <li class="nav-item">
@@ -8,8 +13,12 @@
                 Produtos
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="<?php echo Router::url(['controller' => 'produtos', 'action' => 'index']);?>">Listar</a></li>
-                <li><a class="dropdown-item"  href="<?php echo Router::url(['controller' => 'produtos', 'action' => 'add']);?>">Cadastrar</a></li>
+                <li>
+                    <a class="dropdown-item" href="<?php echo Router::url(['controller' => 'produtos', 'action' => 'index']);?>">Listar</a>
+                </li>
+                <li>
+                    <a class="dropdown-item"  href="<?php echo Router::url(['controller' => 'produtos', 'action' => 'add']);?>">Cadastrar</a>
+                </li>
             </ul>
         </li>
         <li class="nav-item">
@@ -17,8 +26,12 @@
                 Categorias
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="<?php echo Router::url(['controller' => 'categorias', 'action' => 'index']);?>">Listar</a></li>
-                <li><a class="dropdown-item"  href="<?php echo Router::url(['controller' => 'categorias', 'action' => 'add']);?>">Cadastrar</a></li>
+                <li>
+                    <a class="dropdown-item" href="<?php echo Router::url(['controller' => 'categorias', 'action' => 'index']);?>">Listar</a>
+                </li>
+                <li>
+                    <a class="dropdown-item"  href="<?php echo Router::url(['controller' => 'categorias', 'action' => 'add']);?>">Cadastrar</a>
+                </li>
             </ul>
         </li>
         <li class="nav-item">
@@ -26,13 +39,17 @@
                 Estoque
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="<?php echo Router::url(['controller' => 'estoques', 'action' => 'index']);?>">Listar</a></li>
-                <li><a class="dropdown-item"  href="<?php echo Router::url(['controller' => 'estoques', 'action' => 'add']);?>">Cadastrar</a></li>
+                <li>
+                    <a class="dropdown-item" href="<?php echo Router::url(['controller' => 'estoques', 'action' => 'index']);?>">Listar</a>
+                </li>
+                <li>
+                    <a class="dropdown-item"  href="<?php echo Router::url(['controller' => 'estoques', 'action' => 'add']);?>">Cadastrar</a>
+                </li>
             </ul>
         </li>
 
         <li class="nav-item ms-auto p-2 bd-highlight">
-                       <?php echo $this->session->read('Auth.User.id') .' - '.$this->session->read('Auth.User.name');?>
+            <?php echo $this->session->read('Auth.User.id') .' - '.$this->session->read('Auth.User.name');?>
         </li>
         <li>
             <button class="nav-item">

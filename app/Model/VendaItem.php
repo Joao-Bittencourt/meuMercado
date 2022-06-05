@@ -2,12 +2,11 @@
 
 App::uses('AppModel', 'Model');
 
-class Categoria extends AppModel {
+class VendaItem extends AppModel {
 
-    public $useTable = 'categorias';
-    public $displayField = 'nome';
-    public $hasMany = [
-        'Produto'
+    public $useTable = 'venda_itens';
+    public $belongsTo = [
+        'Venda'
     ];
     public $validate = [];
 
@@ -25,12 +24,8 @@ class Categoria extends AppModel {
     public function buildParamsConditions($params = []) {
         $paramsOption = [];
 
-        if (Hash::get($params, 'Categoria.id')) {
-            $paramsOption['conditions'][] = Hash::get($params, 'Categoria.id');
-        }
-
-        if (Hash::get($params, 'Categoria.nome')) {
-            $paramsOption['conditions'][]['Categoria.nome LIKE'] = "%" . Hash::get($params, 'Categoria.nome') . "%";
+        if (Hash::get($params, 'VendaItem.id')) {
+            $paramsOption['conditions'][] = Hash::get($params, 'VendaItem.id');
         }
 
         return $paramsOption;

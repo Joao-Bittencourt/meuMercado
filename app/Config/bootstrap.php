@@ -67,7 +67,9 @@ Cache::config('default', array('engine' => 'File'));
  * CakePlugin::load('DebugKit'); // Loads a single plugin named DebugKit
  */
 
-$ambiente = empty($_SERVER['SERVER_NAME'])? 'prod' : 'dev';
+$server = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'prod';
+
+$ambiente = ($server == 'localhost') ? 'dev' : 'prod';
 
 if ($ambiente == 'dev') {
     

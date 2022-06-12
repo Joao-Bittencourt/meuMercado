@@ -67,15 +67,16 @@ class AppController extends Controller {
         );
 
         $this->Auth->error = __('Erro , você não logou!');
-
-        $this->Auth->allowedActions = [
-            'add',
-            'resetpassword',
-            'login',
-            'view',
-            'index',
-            'edit'
-        ];
+       
+        $this->Auth->allowedActions = [$this->request->params['action']];
+//        $this->Auth->allowedActions = [
+//            'add',
+//            'resetpassword',
+//            'login',
+//            'view',
+//            'index',
+//            'edit'
+//        ];
     }
 
     public function isAuthorized($user) {

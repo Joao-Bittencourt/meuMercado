@@ -78,7 +78,6 @@ class Produto extends AppModel {
                 'message' => 'ind_producao não pode estar em branco.'
             ]
         ],
-        
     ];
 
     public function findAllOrconditions($params = []) {
@@ -90,6 +89,17 @@ class Produto extends AppModel {
         }
 
         return $this->find('all', $paramsOption);
+    }
+    
+    public function findListOrconditions($params = []) {
+
+        $paramsOption = [];
+
+        if (!empty($params)) {
+            $paramsOption = $this->buildParamsConditions($params);
+        }
+
+        return $this->find('list', $paramsOption);
     }
 
     public function buildParamsConditions($params = []) {
@@ -105,6 +115,17 @@ class Produto extends AppModel {
 
         if (Hash::get($params, 'Produto.tipo')) {
             $paramsOption['conditions'][]['Produto.tipo LIKE'] = "%" . Hash::get($params, 'Produto.tipo') . "%";
+        }
+
+        if (Hash::get($params, 'Produto.busca')) {
+            $produtoBusca = Hash::get($params, 'Produto.busca');
+
+            $paramsOption['conditions'][] = [
+                'or' => [
+                    'Produto.nome LIKE' => "%" . $produtoBusca . "%",
+                    'Produto.id LIKE' => "%" . $produtoBusca . "%"
+                ]
+            ];
         }
 
         return $paramsOption;

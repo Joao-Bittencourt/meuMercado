@@ -4,7 +4,6 @@
 	<?php echo $this->element('header'); ?>	
     </head>
     <body class="bg-light">
-        
             <?php echo $this->element('menu'); ?>	
         <main class="container">
             
@@ -14,8 +13,7 @@
                 <?php echo $this->fetch('content'); ?>
             </div>
         <?php echo $this->fetch('script'); ?>
-        <?php echo $this->fetch('css'); ?>
-        
+        <?php echo $this->fetch('css'); ?>      
         </main> 
     </body>
 </html>

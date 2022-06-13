@@ -1,63 +1,32 @@
 <?php
+
 App::uses('ProdutosController', 'Controller');
 
-/**
- * ProdutosController Test Case
- */
 class ProdutosControllerTest extends ControllerTestCase {
 
-/**
- * Fixtures
- *
- * @var array
- */
-	public $fixtures = array(
-		'app.produto'
-	);
+    public $fixtures = [  
+        'app.produto',
+        'app.categoria'
+    ];
+  
+    public function testIndex() {
+        $this->markTestIncomplete('testIndex not implemented.');
+    }
+ 
+    public function testView() {
+        $this->markTestIncomplete('testView not implemented.');
+    }
 
-/**
- * testIndex method
- *
- * @return void
- */
-	public function testIndex() {
-		$this->markTestIncomplete('testIndex not implemented.');
-	}
+    public function testAdd() {
+        $this->markTestIncomplete('testAdd not implemented.');
+    }
 
-/**
- * testView method
- *
- * @return void
- */
-	public function testView() {
-		$this->markTestIncomplete('testView not implemented.');
-	}
+    public function testEdit() {
+        $this->markTestIncomplete('testEdit not implemented.');
+    }
 
-/**
- * testAdd method
- *
- * @return void
- */
-	public function testAdd() {
-		$this->markTestIncomplete('testAdd not implemented.');
-	}
-
-/**
- * testEdit method
- *
- * @return void
- */
-	public function testEdit() {
-		$this->markTestIncomplete('testEdit not implemented.');
-	}
-
-/**
- * testDelete method
- *
- * @return void
- */
-	public function testDelete() {
-		$this->markTestIncomplete('testDelete not implemented.');
-	}
+    public function testDelete() {
+        $this->markTestIncomplete('testDelete not implemented.');
+    }
 
 }

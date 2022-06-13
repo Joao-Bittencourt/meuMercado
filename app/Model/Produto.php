@@ -56,7 +56,7 @@ class Produto extends AppModel {
                 'message' => 'Valor não pode estar em branco.'
             ],
             'decimal' => [
-                'rule' => array('decimal', 2),
+                'rule' => ['decimal', 2],
                 'message' => 'Informe valor valido. (0.00)'
             ]
         ],
@@ -90,7 +90,7 @@ class Produto extends AppModel {
 
         return $this->find('all', $paramsOption);
     }
-    
+
     public function findListOrconditions($params = []) {
 
         $paramsOption = [];

@@ -19,7 +19,7 @@ if( !empty($pdv_products)){
     foreach ($pdv_products as $key => $dado) {
         
         $this->request->data['VendaItem'][$key]['qtd'] = 1;
-        $this->request->data['VendaItem'][$key]['nitem'] = $key+1;
+        $this->request->data['VendaItem'][$key]['n_item'] = $key+1;
       
         $tableCells[$key][] = Hash::get($dado, 'produto_id', '-');
         $tableCells[$key][] = $key+1;
@@ -33,7 +33,7 @@ if( !empty($pdv_products)){
         $this->request->data['Venda']['valor_total'] += $this->request->data['VendaItem'][$key]['valor_total'];
            
         echo $this->Form->input("VendaItem.{$key}.produto_id", ['type'=> 'hidden']);
-        echo $this->Form->input("VendaItem.{$key}.nitem", ['type'=> 'hidden']);
+        echo $this->Form->input("VendaItem.{$key}.n_item", ['type'=> 'hidden']);
         echo $this->Form->input("VendaItem.{$key}.nome", ['type'=> 'hidden']);
         echo $this->Form->input("VendaItem.{$key}.produto_id", ['type'=> 'hidden']);
         echo $this->Form->input("VendaItem.{$key}.preco", ['type'=> 'hidden']);

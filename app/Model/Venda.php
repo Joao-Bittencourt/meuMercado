@@ -8,9 +8,32 @@ class Venda extends AppModel {
     public $hasMany = [
         'VendaItem'
     ];
-    public $validate = [];
+    public $validate = [
+        'venda_status' => [
+            'notBlank' => [
+                'rule' => 'notBlank',
+                'message' => 'status da venda não pode estar em branco'
+            ],
+        ],
+        'tipo_venda_id' => [
+            'notBlank' => [
+                'rule' => 'notBlank',
+                'message' => 'Tipo de venda não pode estar em branco'
+            ],
+        ],
+        'valor_total' => [
+            'notBlank' => [
+                'rule' => 'notBlank',
+                'message' => 'valor total não pode estar em branco'
+            ],
+            'decimal' => [
+                'rule' => ['decimal', 2],
+                'message' => 'Informe valor valido. (0.00)'
+            ]
+        ]
+    ];
 
-    public function findAllOrconditions($params = []) {
+   public function findAllOrconditions($params = []) {
 
         $paramsOption = [];
 

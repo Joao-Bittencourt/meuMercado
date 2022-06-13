@@ -8,8 +8,31 @@ class VendaItem extends AppModel {
     public $belongsTo = [
         'Venda'
     ];
-    public $validate = [];
-
+    public $validate = [
+        'produto_id' => [
+            'notBlank' => [
+                'rule' => 'notBlank',
+                'message' => 'Produto não pode estar em branco'
+            ]
+        ],
+        'preco' => [
+            'notBlank' => [
+                'rule' => 'notBlank',
+                'message' => 'Preço não pode estar em branco'
+            ],
+            'decimal' => [
+                'rule' => ['decimal', 2],
+                'message' => 'Informe valor valido. (0.00)'
+            ]
+        ],
+        'qtd' => [
+            'notBlank' => [
+                'rule' => 'notBlank',
+                'message' => 'Quantidade não pode estar em branco'
+            ] 
+        ]
+    ];
+    
     public function findAllOrconditions($params = []) {
 
         $paramsOption = [];

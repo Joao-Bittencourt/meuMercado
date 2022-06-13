@@ -1,6 +1,11 @@
 <?php
 
-echo $this->Form->create('Venda',[]);
+echo $this->Form->create('Venda', [
+    'url' => [
+        'controller' => 'vendas',
+        'action' => 'add'
+    ]
+]);
 $lastVendaItem = 0;
 ?>
 
@@ -47,6 +52,8 @@ $lastVendaItem = 0;
             <div class="card-body">
             <?php
                  echo $this->Form->input('Venda.id', ['type' => 'hidden']);   
+                 echo $this->Form->input('Venda.tipo_venda_id', ['type' => 'hidden', 'value' => 1]);  // Venda rapida  
+                 echo $this->Form->input('Venda.venda_status', ['type' => 'hidden', 'value' => 1]);  // Venda concluida  
                  echo $this->Form->submit('Finalizar Venda',['class'=>'btn btn-primary']);
                  echo $this->Form->end();
             ?>

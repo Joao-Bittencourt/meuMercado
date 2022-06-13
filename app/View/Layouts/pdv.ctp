@@ -33,7 +33,6 @@
                         method: 'post',
                         url: '<?php echo  Router::url( ['controller'=>'pdvs','action' => 'index'], true );?>/index/produto_id:' + ui.item.id,
                         data: values,
-
                         success: function (response) {
                             $('#VendaIndexForm').html(response);
                         }
